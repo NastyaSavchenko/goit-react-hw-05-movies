@@ -1,6 +1,6 @@
 import { Loader, MoviesList, SearchMovies } from 'components';
 import { Suspense, useEffect, useState } from 'react';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useLocation } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 import { getMoviesByName } from '../../services/takeApi';
@@ -9,6 +9,8 @@ import { MainSlyels } from './Movies.styled';
 const Movies = () => {
   const [query, setQuery] = useState('');
   const [moviesData, setmoviesData] = useState([]);
+  const location = useLocation();
+  const fromQueryString = location.search.replace(/\?query=/, '');
 
   const getQuery = searchName =>
     searchName === ''
@@ -35,6 +37,19 @@ const Movies = () => {
 
     fetchData();
   }, [query]);
+
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const response = await getMoviesByName(fromQueryString);
+        const data = response.data.results;
+        setmoviesData(data);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    fetchData();
+  }, []);
 
   return (
     <>

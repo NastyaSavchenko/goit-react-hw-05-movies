@@ -1,11 +1,13 @@
 import PT from 'prop-types';
 import { useState } from 'react';
 import { BiSearchAlt2 } from 'react-icons/bi';
+import { useSearchParams } from 'react-router-dom';
 
 import { Form, Input, SearchBtn } from './SearchMovies.styled';
 
 const SearchMovies = ({ onSubmit }) => {
   const [inputValue, setInputValue] = useState('');
+  const [searchParams, setSearchParams] = useSearchParams();
 
   const onInputChange = event => {
     const name = event.target.value;
@@ -17,6 +19,7 @@ const SearchMovies = ({ onSubmit }) => {
     const searchName = inputValue.trim();
     setInputValue('');
     onSubmit(searchName);
+    setSearchParams({ query: searchName });
   };
 
   return (

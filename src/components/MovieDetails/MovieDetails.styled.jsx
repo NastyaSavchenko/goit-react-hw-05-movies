@@ -6,7 +6,7 @@ export const MainSlyels = styled.main`
   padding: 20px;
 `;
 
-export const LinkStyles = styled(Link)`
+export const BtnGoBack = styled.button`
   width: 100px;
   padding: 8px 5px;
   display: flex;
@@ -16,6 +16,8 @@ export const LinkStyles = styled(Link)`
   border: solid 1px #e50914;
   border-radius: 4px;
   transition: color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  background-color: inherit;
+  color: inherit;
 
   &:hover,
   &:focus {

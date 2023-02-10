@@ -1,16 +1,16 @@
 import { Loader } from 'components';
 import { Suspense, useEffect, useState } from 'react';
 import { BsArrowLeft } from 'react-icons/bs';
-import { Outlet, useLocation, useParams } from 'react-router-dom';
+import { Outlet, useLocation, useNavigate, useParams } from 'react-router-dom';
 
 import notAvailable from '../../img/notAvailable.png';
 import { getMoviesDetails } from '../../services/takeApi';
 import {
+  BtnGoBack,
   Img,
   InfoLink,
   InfoTitle,
   InfoWrapp,
-  LinkStyles,
   MainSlyels,
   MoreInfoList,
   Overview,
@@ -23,7 +23,10 @@ const MovieDetails = () => {
   const { movieId } = useParams();
   const [movieInfo, setmovieInfo] = useState({});
   const [genres, setGenres] = useState([]);
+  const [oldPath, setOldPath] = useState();
   const location = useLocation();
+
+  let navigate = useNavigate();
 
   useEffect(() => {
     if (!movieId) {
@@ -40,21 +43,22 @@ const MovieDetails = () => {
       }
     }
     fetchData();
+    setOldPath(location.state.from);
   }, []);
+
+  const goBack = () => {
+    navigate(oldPath);
+  };
 
   const { original_title, release_date, vote_average, overview, poster_path } =
     movieInfo;
   return (
     <>
       <MainSlyels>
-        <LinkStyles
-          to={{
-            pathname: location.state.from.pathname === '/' ? '/' : `/movies`,
-          }}
-        >
-          <BsArrowLeft />
+        <BtnGoBack onClick={goBack}>
+          <BsArrowLeft style={{ marginRight: '10px' }} />
           Go back
-        </LinkStyles>
+        </BtnGoBack>
         {movieInfo && (
           <InfoWrapp>
             <Img
