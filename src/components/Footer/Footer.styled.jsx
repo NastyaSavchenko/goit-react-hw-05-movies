@@ -10,7 +10,6 @@ export const FooterStyles = styled.footer`
   justify-content: center;
   border-top: solid 1px #e50914;
   box-shadow: 0 0 13px 3px #e50914;
-  max-width: 1300px;
 
   > div {
     align-items: center;

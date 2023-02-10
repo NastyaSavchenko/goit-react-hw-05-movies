@@ -9,7 +9,6 @@ export const Header = styled.header`
   padding: 15px;
   border-bottom: solid 1px #e50914;
   box-shadow: 0 0 13px 3px #e50914;
-  max-width: 1300px;
 
   > nav {
     display: flex;
