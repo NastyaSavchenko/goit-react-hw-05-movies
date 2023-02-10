@@ -1,6 +1,6 @@
 import 'react-toastify/dist/ReactToastify.css';
 
-import { Footer, Layout, Loader } from 'components';
+import { Footer, Layout } from 'components';
 import { lazy } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
