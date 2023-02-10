@@ -1,0 +1,9 @@
+export { default as AppBar } from './AppBar/AppBar';
+export { default as Footer } from './Footer/Footer';
+export { default as Layout } from './Layout/Layout';
+export { default as Loader } from './Loader/Loader';
+export { default as MovieCard } from './MovieCard/MovieCard';
+export { default as MoviesList } from './MoviesList/MoviesList';
+export { default as ReadMore } from './ReadMore/ReadMore';
+export { default as SearchMovies } from './SearchMovies/SearchMovies';
+export { default as TrendMoviesList } from './TrendMoviesList/TrendMoviesList';
